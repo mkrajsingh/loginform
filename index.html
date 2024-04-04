@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <style>
+      /* CSS for styling purposes (optional) */
+      body {
+        font-family: Arial, sans-serif;
+      }
+      form {
+        max-width: 300px;
+        margin: 0 auto;
+      }
+      input[type="text"],
+      input[type="password"],
+      button {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 5px;
+      }
+      button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      #message {
+        margin-top: 10px;
+        font-weight: bold;
+      }
+      .error {
+        color: red;
+      }
+      .success {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Login Page</h1>
+    <div id="loginContainer">
+      <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required />
+        <label for="password">Password:</label>
+        <input type="password" id="password" required />
+        <button type="submit">Submit</button>
+        <div id="message"></div>
+      </form>
+    </div>
+
+    <script>
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          var username = document.getElementById("username").value;
+          var password = document.getElementById("password").value;
+          var messageElement = document.getElementById("message");
+          var loginContainer = document.getElementById("loginContainer");
+          if (username === "user" && password === "password") {
+            document.getElementById("loginForm").reset(); // Clear form fields
+            loginContainer.innerHTML = "<p class='success'>Welcome, user!</p>";
+          } else {
+            messageElement.textContent = "Invalid username or password";
+            messageElement.className = "error";
+          }
+        });
+    </script>
+  </body>
+</html>
